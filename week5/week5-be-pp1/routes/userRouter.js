@@ -1,7 +1,6 @@
-// routes/userRouter.js
-
 const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/auth"); // ← Add this line
 
 const {
   getAllUsersHandler,
@@ -11,11 +10,13 @@ const {
   deleteUserHandler,
 } = require("../controllers/userControllers");
 
-// Define routes
-router.get("/", getAllUsersHandler); // GET /users
-router.get("/:userId", getUserByIdHandler); // GET /users/1
-router.post("/", createUserHandler); // POST /users
-router.put("/:userId", updateUserHandler); // PUT /users/1
-router.delete("/:userId", deleteUserHandler); // DELETE /users/1
+// Public routes - no auth needed
+router.get("/", getAllUsersHandler);
+router.get("/:userId", getUserByIdHandler);
+
+// Protected routes - auth middleware applied
+router.post("/", auth, createUserHandler); // ← Add auth
+router.put("/:userId", auth, updateUserHandler); // ← Add auth
+router.delete("/:userId", auth, deleteUserHandler); // ← Add auth
 
 module.exports = router;

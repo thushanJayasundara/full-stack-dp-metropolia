@@ -1,9 +1,7 @@
-// routes/tourRouter.js
-
 const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/auth"); // ← Add this line
 
-// Import the controller functions
 const {
   getAllTours,
   getTourById,
@@ -12,11 +10,13 @@ const {
   deleteTour,
 } = require("../controllers/tourControllers.js");
 
-// Define routes
-router.get("/", getAllTours); // GET /tours
-router.get("/:tourId", getTourById); // GET /tours/123
-router.post("/", createTour); // POST /tours
-router.put("/:tourId", updateTour); // PUT /tours/123
-router.delete("/:tourId", deleteTour); // DELETE /tours/123
+// Public routes - no auth needed
+router.get("/", getAllTours);
+router.get("/:tourId", getTourById);
+
+// Protected routes - auth middleware applied
+router.post("/", auth, createTour); // ← Add auth
+router.put("/:tourId", auth, updateTour); // ← Add auth
+router.delete("/:tourId", auth, deleteTour); // ← Add auth
 
 module.exports = router;
