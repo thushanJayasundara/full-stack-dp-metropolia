@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../middleware/auth"); // ← Add this line
+const auth = require("../middleware/auth");
 
 const {
   getAllTours,
