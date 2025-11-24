@@ -1,0 +1,7 @@
+# TX00#web# after encoding TX00%23web%23
+
+# https://www.w3schools.com/tags/ref_urlencode.asp?_sm_au_=iVVDMg0TSmrMV6Dm
+
+MONGO_INITDB_ROOT_USERNAME=root
+MONGO_INITDB_ROOT_PASSWORD=1234
+MONGO_INITDB_DATABASE=web-dev
