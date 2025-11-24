@@ -31,7 +31,7 @@ app.use("/api/cars", carRouter);
 app.use("/api/blogs", blogRouter);
 
 // Use the userRouter for all /users routes
-app.use("/api/users", blogRouter);
+app.use("/api/users", userRouter);
 
 app.use(unknownEndpoint);
 
