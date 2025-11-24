@@ -5,8 +5,8 @@ const getAllTours = (req, res) => {
 };
  
 const createTour = (req, res) => {
-  const { name, info, image, price, duration, groupSize, rating, availability } = req.body;
-  const newTour = Tour.addOne(name, info, image, price, duration, groupSize, rating, availability);
+  const { name, info, image, price } = req.body;
+  const newTour = Tour.addOne(name, info, image, price);
   if (newTour) {
     res.json(newTour);
   } else {
