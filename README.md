@@ -1,4 +1,4 @@
-# Full-Stack DP – Metropolia
+# Full Stack Web Development TX00FT04-3003
 
 This repository includes my weekly pair programming tasks, activities, and homework for the **Full-Stack Development Program** at Metropolia.
 
