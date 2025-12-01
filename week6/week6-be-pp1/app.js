@@ -3,13 +3,16 @@ const app = express();
 const tourRouter = require("./routes/tourRouter");
 const userRouter = require("./routes/userRouter");
 const { unknownEndpoint } = require("./middleware/customMiddleware");
+const connectDB = require("./config/db");
 
 const morgan = require("morgan");
 app.use(morgan("dev"));
 
 // Middleware to parse JSON
 app.use(express.json());
- 
+
+connectDB();
+
 // Use the tourRouter for all "/tours" routes
 app.use("/api/tours", tourRouter);
 
@@ -24,4 +27,3 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
- 
