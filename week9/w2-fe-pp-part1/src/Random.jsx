@@ -1,17 +1,13 @@
 function Random(props) {
     return (
-        <div className="random-number-card">
-
-
-
+        <div className="random-number-card border">
 
             <p>
-                <strong>Last name:</strong> {props.min}
+                <strong>Random value between :</strong> {props.min}
+                <strong> and </strong> {props.max} <strong> => </strong>
+                {" "} {Math.floor(Math.random() * (props.max - props.min + 1) + props.min)}
             </p>
 
-            <p>
-                <strong>Last name:</strong> {props.max}
-            </p>
         </div>
     )
 }

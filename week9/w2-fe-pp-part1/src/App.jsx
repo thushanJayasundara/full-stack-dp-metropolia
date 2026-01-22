@@ -25,11 +25,8 @@ function App() {
             picture="https://randomuser.me/api/portraits/women/44.jpg"
         />
 
-        <Random
-            min="Delores"
-            max="Obrien"
-        />
-
+        <Random min={1} max={6}/>
+        <Random min={1} max={100}/>
 
 
     </div>
