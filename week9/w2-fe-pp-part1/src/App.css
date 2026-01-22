@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+.id-card {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    padding: 16px;
+    margin: 16px auto;
+    width: 800px;
+    box-sizing: border-box;
+}
+
+.id-card-image {
+    width: 120px;
+    height: auto;
+    margin-right: 24px;
+}
+
+.id-card-info p {
+    margin: 6px 0;
+}
