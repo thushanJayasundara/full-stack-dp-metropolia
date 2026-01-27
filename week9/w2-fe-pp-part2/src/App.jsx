@@ -1,5 +1,6 @@
 import "./App.css";
 import CreditCard from "./CreditCard"
+import {getBoxColor} from "./MyComponent.jsx"
 
 function App() {
   return (
