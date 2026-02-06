@@ -5,7 +5,7 @@ import { tours } from "../data";
 
 const Tours = () => {
     const [toursData, setToursData] = useState(tours);
-    
+
     const removeTour = (id) => {
         setToursData((prev) => prev.filter((tour) => tour.id !== id));
     };
