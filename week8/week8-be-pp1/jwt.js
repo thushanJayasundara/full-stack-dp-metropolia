@@ -50,7 +50,7 @@ function jwtVerify(token, secret) {
 
 
 const header = { alg: "HS256", typ: "JWT" };
-const payload = { userId: 123, userName: "Matti" };
+const payload = { userId: 123, userName: "R3g5T7#gh" };
 const secret = "my-secret-key";
 
 const token = jwtSign(payload, secret, header);
