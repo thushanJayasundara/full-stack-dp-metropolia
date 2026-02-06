@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/week12/week4-pp-part3/week4-fe-pp" vcs="Git" />
   </component>
 </project>
