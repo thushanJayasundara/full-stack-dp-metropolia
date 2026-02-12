@@ -25,4 +25,9 @@ router.get("/type/:type", getJobsByType);
 router.get("/location/:location", getJobsByLocation);
 router.get('/count/type/:type', countJobsByType);
 
+router.get("/", async (req, res)=>{
+  const jobs = await Job.find();
+  res.json(jobs);
+});
+
 module.exports = router;

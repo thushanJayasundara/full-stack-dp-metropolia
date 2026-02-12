@@ -1,3 +1,4 @@
+app.use("/api/jobs", require ("./routes/jobs"));
 const books = [
   {
     title: "Software Engineer",
