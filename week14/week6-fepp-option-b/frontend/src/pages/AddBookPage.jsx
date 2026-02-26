@@ -1,16 +1,49 @@
-const [title, setTitle] = useState("");
-const [author, setAuthor] = useState("");
-const [isbn, setIsbn] = useState("");
-const [publisher, setPublisher] = useState("");
-const [genre, setGenre] = useState("");
-const [isAvailable, setIsAvailable] = useState("true");
-const [dueDate, setDueDate] = useState("");
-const [borrower, setBorrower] = useState("");
-
+import { useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddBookPage = () => {
+  const navigate = useNavigate();
+
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [isbn, setIsbn] = useState("");
+  const [publisher, setPublisher] = useState("");
+  const [genre, setGenre] = useState("");
+  const [isAvailable, setIsAvailable] = useState("true");
+  const [dueDate, setDueDate] = useState("");
+  const [borrower, setBorrower] = useState("");
+
+  const addBook = async (newBook) => {
+      try {
+          const res = await fetch("/api/books", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(newBook),
+          });
+          if (!res.ok) throw new Error("Failed to add book");
+      } catch (error) {
+          console.error(error);
+      }
+  };
+
   const submitForm = (e) => {
     e.preventDefault();
+
+      const newBook = {
+          title,
+          author,
+          isbn,
+          publisher,
+          genre,
+          availability: {
+              isAvailable: isAvailable === "true",
+              dueDate: dueDate || null,
+              borrower,
+          },
+      };
+      addBook(newBook);
+      navigate("/");
+
     console.log("submitForm called");
   };
 
@@ -21,8 +54,9 @@ const AddBookPage = () => {
 
         <label>Book Title:</label>
         <input type="text" required
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}/>
+               value={title}
+               onChange={(e) => setTitle(e.target.value)}
+        />
 
         <label>Author:</label>
         <input type="text" required
@@ -45,12 +79,12 @@ const AddBookPage = () => {
         onChange={(e) => setGenre(e.target.value)}/>
 
         <label>Available:</label>
-        <select
-        value={isAvailable}
-        onChange={(e) => setIsAvailable(e.target.value === "true")}>
-          <option value="true">Yes</option>
-          <option value="false">No</option>
-        </select>
+          <select
+              value={isAvailable}
+              onChange={(e) => setIsAvailable(e.target.value === "true")}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+          </select>
 
         <label>Due Date:</label>
         <input type="date"
